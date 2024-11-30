@@ -13,11 +13,11 @@ namespace EcommProject.DataAccess.Repository
     public class Repository<T> : IRepository<T> where T : class
     {
         private readonly ApplicationDbContext _context;
-        internal DbSet<T> dbSet;  //dbSet is variable here, dbSet T type kaa variable lee lega
+        internal DbSet<T> dbSet;  
         public Repository(ApplicationDbContext context)
         {
             _context = context;
-            dbSet = _context.Set<T>(); //Similar to _context.T,where T = Class = Model(like CoverType,Category)
+            dbSet = _context.Set<T>(); 
         }
 
         public void Add(T entity)
@@ -45,14 +45,14 @@ namespace EcommProject.DataAccess.Repository
             return dbSet.Find(id);
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)// Category,CoverType
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
         {
-            IQueryable<T> query = dbSet; //IQueryable is variable here, query is name of variable here and pass dbSet in the variable
+            IQueryable<T> query = dbSet; 
             if (filter != null)
                 query = query.Where(filter);
             if (includeProperties != null)
             {
-                foreach (var includeProp in includeProperties.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))//Split to make array, use ',' to split array
+                foreach (var includeProp in includeProperties.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     query = query.Include(includeProp);
                 }
@@ -69,7 +69,7 @@ namespace EcommProject.DataAccess.Repository
 
         public void Remove(int id)
         {
-            dbSet.Remove(Get(id));//We can also write this dbSet.Remove(dbSet.Find(id));
+            dbSet.Remove(Get(id));
         }
 
         public void RemoveRange(IEnumerable<T> entities)
@@ -79,7 +79,7 @@ namespace EcommProject.DataAccess.Repository
 
         public void Update(T entity)
         {
-            _context.ChangeTracker.Clear(); //Used to Clear all old changes
+            _context.ChangeTracker.Clear(); 
             dbSet.Update(entity);
         }
 
