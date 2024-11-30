@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace EcommProject.Utility
 {
-    public static class SD //static class means object nhi bnega
+    public static class SD 
     {
         //Cover Type SP
-        public const string Proc_GetCoverTypes = "GetCoverTypes";  //Proc_GetCoverTypes is name here , name apni merji se rakh sakte hai, GetCoverTypes is name of Stored procedure
+        public const string Proc_GetCoverTypes = "GetCoverTypes"; 
         public const string Proc_GetCoverType = "GetCoverType";
         public const string Proc_CreateCoverType = "CreateCoverType";
         public const string Proc_UpdateCoverType = "UpdateCoverType";
