@@ -14,15 +14,15 @@ namespace EcommProject.Models
             Count = 1;
         }
         public int Id { get; set; }
-        public string ApplicationUserId { get; set; }//Column Name
-        [ForeignKey("ApplicationUserId")]//ApplicationUser Table ke Id Column se foreign key bnegi
+        public string ApplicationUserId { get; set; }
+        [ForeignKey("ApplicationUserId")]
         public ApplicationUser ApplicationUser { get; set; }
         public int  ProductId { get; set; }
         [ForeignKey("ProductId")]
         public Product Product { get; set; }
         public int Count { get; set; }
         [NotMapped]
-        public double Price { get; set; } //Price fix nhi hai isliye price ko NotMapped rkha
+        public double Price { get; set; }
         public bool IsSelected { get; set; }
         public bool IsRemoveFromCart { get; set; }
     }
