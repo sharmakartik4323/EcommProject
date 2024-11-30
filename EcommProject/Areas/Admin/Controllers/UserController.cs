@@ -55,7 +55,7 @@ namespace EcommProject.Areas.Admin.Controllers
             return Json(new { data = userList });
         }
         [HttpPost]
-        public IActionResult LockUnlock([FromBody]string id)//[FromBody] means user.js se data aega, means form,body se Data aega
+        public IActionResult LockUnlock([FromBody]string id)
         {
             bool isLocked = false;
             var userInDb = _context.ApplicationUsers.FirstOrDefault(au => au.Id == id);
