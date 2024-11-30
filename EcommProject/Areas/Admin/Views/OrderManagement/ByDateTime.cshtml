@@ -1,0 +1,73 @@
+﻿@model IEnumerable<EcommProject.Models.OrderHeader>
+
+<div class="box-tools pull-right">
+    @using (Html.BeginForm("ByDateTime", "OrderManagement", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="fromDate" class="my-label">From Date:</label>
+                    <input type="date" id="fromDate" name="startDate" class="form-control my-input" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="toDate" class="my-label">To Date:</label>
+                    <input type="date" id="toDate" name="endDate" class="form-control my-input" />
+                </div>
+            </div>
+        </div>
+        <div class="m-1 p-1">
+            <div class="col-md-3">
+                <button type="submit" onclick="validateDates()" class="btn btn-primary my-button form-control ">Search</button>
+            </div>
+        </div>
+    }
+</div>
+<div class="container rounded border m-2 p-2">
+    <table id="tbldata" class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Order Id</th>
+                <th>Name</th>
+                <th>Order Date</th>
+                <th>Order Status</th>
+                <th>Order Total</th>
+                <th>Payment Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <th>@item.OrderDate</th>
+                    <td>@item.OrderStatus</td>
+                    <td>@item.OrderTotal</td>
+                    <td>@item.PaymentStatus</td>
+                    <td>
+                        <a asp-action="Index" class="btn btn-success form-control">
+                            Back To List
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    function validateDates() {
+        var fromDate = document.getElementById('fromDate').value;
+        var toDate = document.getElementById('toDate').value;
+
+        if (fromDate && toDate) {
+            if (fromDate > toDate) {
+                alert("The 'From Date' cannot be later than the 'To Date'");
+            }
+        } else {
+            alert("Please select both dates.");
+        }
+    }
+</script>
