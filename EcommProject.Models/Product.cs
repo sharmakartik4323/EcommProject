@@ -35,7 +35,7 @@ namespace EcommProject.Models
         [Required]
         [Display(Name ="Category")]
         public int CategoryId { get; set; }
-        public Category Category { get; set; } //Iske Saath Foreign Key Bnegi
+        public Category Category { get; set; } 
         [Required]
         [Display(Name ="Cover Type")]
         public int CoverTypeId { get; set; }
