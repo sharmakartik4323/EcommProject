@@ -1,0 +1,120 @@
+﻿@model EcommProject.Models.ViewModels.ShoppingCartVM
+<form method="post">
+    <br />
+    <div class="backgroundWhiteBorder">
+        <div class="container">
+            <div class="card">
+                <div class="card-header bg-dark text-light ml-0 row container">
+                    <div class="col-6">
+                        <i class="fa fa-shopping-cart"></i> &nbsp;
+                        Shopping Cart
+                    </div>
+                    <div class="col-6 text-right">
+                        <a asp-action="Index" asp-controller="Home" class="btn btn-outline-info btn-sm">Continue Shopping</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @foreach (var list in Model.ListCart)
+                    {
+                        <div class="row">
+                            <div style="display: flex; align-items: center;">
+                                <input type="checkbox" id="@list.Id" value="@list.Id" style="width:16px; height:14px;" />
+                            </div>
+                            <div class="d-none d-lg-block col-lg-1 text-center py-2">
+                                <img src="@list.Product.ImageUrl" class="rounded" width="100%" />
+                            </div>
+                            <div class="col-12 text-sm-center col-lg-6 text-lg-left">
+                                <h5><strong>@list.Product.Title</strong></h5>
+                                <p><small>@Html.Raw(list.Product.Description)</small></p>
+                            </div>
+                            <div class="col-12 text-sm-center col-lg-5 text-lg-right row">
+                                <div class="col-4 text-md-right" style="padding-top:5px;">
+                                    <h6><strong>@list.Price<span class="text-muted">x</span>@list.Count=@(list.Price * list.Count)</strong></h6>
+                                </div>
+                                <div class="col-6 col-sm-4 col-lg-6">
+                                    <div class="float-right mx-1">
+                                        <a asp-action="plus" class="btn btn-primary" asp-route-id="@list.Id">
+                                            <i class="fas fa-plus"></i>
+                                        </a>
+                                    </div>
+                                    <div class="float-right mx-1">
+                                        <a asp-action="minus" class="btn btn-danger" asp-route-id="@list.Id">
+                                            <i class="fas fa-minus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-2 col-sm-4 col-lg-2 text-right">
+                                    <a asp-action="delete" asp-route-id="@list.Id" type="submit" class="btn btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <hr />
+                    <div class="row">
+                        <div class="col-12 col-md-6 offset-md-6 col-lg-4 offset-lg-8 pr-4">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between bg-light">
+                                    <span class="text-info"> Total (USD)</span>
+                                    <strong class="text-info">$ <span id="txtOrderTotal">@Model.OrderHeader.OrderTotal</span></strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="card-footer row">
+                        @if(!Model.OrderHeader.ApplicationUser.EmailConfirmed)//Here EmailConfirmed is the column in table
+                        {
+                        <div class="col-8 @ViewBag.EmailCSS">
+                        @ViewBag.EmailMessage
+                        </div>
+                        <div class="col-4">
+                        <button type="submit" class="btn btn-outline-warning">
+                        Click Here to resend Confirmation Email
+                        </button>
+                        </div>
+                        }
+                        else
+                        {
+                        <div class="col-sm-12 col-lg-4 col-md-6 offset-lg-8 offset-md-6 ">
+                            <a asp-action="Summary" id="summarybtn" class="btn btn-success form-control">Summary</a>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#summarybtn').click(function (e) {
+                e.preventDefault();
+                var checkId = $('input[type=checkbox]:checked');
+                if (checkId.length === 0) {
+                    alert("Please Select A Product");
+                    return false;
+                }
+                var checkInput = [];
+                checkId.each(function () {
+                    checkInput.push($(this).val());
+                });
+                console.log("CheckBoxInput:", checkInput.join(','));
+                $.ajax({
+                    url: "/Customer/Cart/Summary",
+                    method: "GET",
+                    data: {
+                        checkBoxInput: checkInput.join(',')
+                    },
+                    success: function (response) {
+                        window.location.href = "/Customer/Cart/Summary?checkBoxInput=" + checkInput.join(',');
+                    }
+                })
+            })
+        })
+    </script>
+}
