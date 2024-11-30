@@ -10,7 +10,7 @@ namespace EcommProject.Models.ViewModels
 {
     public class ShoppingCartVM
     {
-        public IEnumerable<ShoppingCart> ListCart { get; set; } //Jis user ne Login kiya uske Cart me kon kon se items hai,Example Vikas ne login kiya uske Cart me 3 items hai toh isme 3 record aaege
+        public IEnumerable<ShoppingCart> ListCart { get; set; } 
         public OrderHeader OrderHeader { get; set; }
 
         //****
