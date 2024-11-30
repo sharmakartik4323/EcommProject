@@ -24,7 +24,7 @@ namespace EcommProject.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            //return Json(new {data= _unitOfWork.Category.GetAll() }); //GetAll is a Generic Method,rightclick Go To Implementation
+            
             return Json(new { data = _unitOfWork.SP_CALL.List<Category>(SD.Proc_GetCategories) });
         }
         [HttpDelete]
@@ -33,8 +33,7 @@ namespace EcommProject.Areas.Admin.Controllers
             var categoryInDb = _unitOfWork.Category.Get(id);
             if (categoryInDb == null)
                 return Json(new { success = false, message = "Something went wrong while delete data !" });
-            // _unitOfWork.Category.Remove(categoryInDb);
-            // _unitOfWork.Save();
+            
             DynamicParameters param = new DynamicParameters();
             param.Add("id", id);
             _unitOfWork.SP_CALL.Execute(SD.Proc_DeleteCategory, param);
@@ -47,9 +46,9 @@ namespace EcommProject.Areas.Admin.Controllers
             if (id == null) return View(category); //Create
             //Edit
             DynamicParameters param = new DynamicParameters();
-            param.Add("id", id.GetValueOrDefault());//id parameter kaa name hai, jo stored procedure me diya hai
+            param.Add("id", id.GetValueOrDefault());
             category = _unitOfWork.SP_CALL.OneRecord<Category>(SD.Proc_GetCategory, param);
-            //category = _unitOfWork.Category.Get(id.GetValueOrDefault());  //right click on Get go to implementation
+            
             if (category == null) return NotFound();
             return View(category);
         }
@@ -60,7 +59,7 @@ namespace EcommProject.Areas.Admin.Controllers
             if (category == null) return NotFound();
             if (!ModelState.IsValid) return View(category);
             DynamicParameters param = new DynamicParameters();
-            param.Add("name", category.Name);//category.Name se aaega name yhaa, category View hai or Name property hai
+            param.Add("name", category.Name);
             if (category.Id == 0)
                 // _unitOfWork.Category.Add(category);
                 _unitOfWork.SP_CALL.Execute(SD.Proc_CreateCategory, param);
