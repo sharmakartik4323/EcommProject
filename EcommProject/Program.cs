@@ -42,8 +42,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 builder.Services.AddAuthentication().AddFacebook(options =>
 {
-    options.AppId = "1737472480411339";
-    options.AppSecret = "e1e5da924772637e09c50c56b1b0333d";
+    options.AppId = "";
+    options.AppSecret = "";
 })
 //.AddGoogle(options =>
 //{
@@ -52,14 +52,14 @@ builder.Services.AddAuthentication().AddFacebook(options =>
 //})
 .AddInstagram(options =>
 {
-    options.ClientId = "1101781631641418";
-    options.ClientSecret = "fcdcd627c822e64cedf9b7126380dbee";
+    options.ClientId = "";
+    options.ClientSecret = "";
 })
 .AddTwitter(options =>
 {
-    options.ConsumerKey = "9pA32SnrRGPsLXyKa0oeINKie";
-    options.ConsumerSecret = "nyd95em5D28o4ZwxtQw98xYYdu9DzvVRGyANaGmucC9M3LpwSi";
-    //Bearer Token AAAAAAAAAAAAAAAAAAAAAJ17wAEAAAAAIqGJoCSgdK % 2BJEHij17jzYWgZCW0 % 3DhZ6xelKOJTTA50ZLkuXAi3d0Ivpfs4gdf8VMKFh1KCE0H6Rni4
+    options.ConsumerKey = "";
+    options.ConsumerSecret = "";
+    
 });
 builder.Services.AddSession(options =>
 {
