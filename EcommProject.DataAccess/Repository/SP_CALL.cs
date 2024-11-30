@@ -19,16 +19,16 @@ namespace EcommProject.DataAccess.Repository
         public SP_CALL(ApplicationDbContext context)
         {
             _context= context;
-            connectionString = _context.Database.GetDbConnection().ConnectionString; //Code to get connectionString
+            connectionString = _context.Database.GetDbConnection().ConnectionString; 
         }
-        public void Dispose() //YE Dispose IDisposable se aya
+        public void Dispose() 
         {
             _context.Dispose();
         }
 
         public void Execute(string procedureName, DynamicParameters param = null)
         {
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))  //using for disposable objects
+            using (SqlConnection sqlCon = new SqlConnection(connectionString)) 
             {
                 sqlCon.Open();
                 sqlCon.Execute(procedureName, param,commandType:CommandType.StoredProcedure);
@@ -54,7 +54,7 @@ namespace EcommProject.DataAccess.Repository
                 var item2 = result.Read<T2>();
                 if(item1!= null && item2 != null)
                     return new Tuple<IEnumerable<T1>, IEnumerable<T2>>(item1, item2 );
-                    //agar null nhi hai to khali object bnakr hii return kr do
+                    
                     return new Tuple<IEnumerable<T1>, IEnumerable<T2>>(new List<T1>(),new List<T2>() );
             }  
         }
@@ -64,7 +64,7 @@ namespace EcommProject.DataAccess.Repository
             using(SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
-                return sqlCon.ExecuteScalar<T>(procedureName, param,commandType:CommandType.StoredProcedure); //ExecuteScalar returns only single value
+                return sqlCon.ExecuteScalar<T>(procedureName, param,commandType:CommandType.StoredProcedure); 
             }
         }
 
