@@ -19,10 +19,10 @@ namespace EcommProject.Utility
         }
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            Execute(email,subject, htmlMessage).Wait();//This Wait() is similar like await
+            Execute(email,subject, htmlMessage).Wait();
             return Task.FromResult(0);
         }
-        //We create a method here named Execute and call it in SendEmailAsync
+        
         public async Task  Execute(string email, string subject, string htmlMessage)
         {
             try
@@ -30,7 +30,7 @@ namespace EcommProject.Utility
                 string toEmail = string.IsNullOrEmpty(email) ? _emailSettings.ToEmail : email;
                 MailMessage mailMessage = new MailMessage()
                 {
-                    From = new MailAddress(_emailSettings.FromEmail, "My Email Name")//"My Email Name" is the display name here
+                    From = new MailAddress(_emailSettings.FromEmail, "My Email Name")
                 };
                 mailMessage.To.Add(toEmail);
                 mailMessage.CC.Add(_emailSettings.CcEmail);
@@ -42,7 +42,7 @@ namespace EcommProject.Utility
                 {
                     smtpClient.Credentials = new NetworkCredential(_emailSettings.UsernameEmail, _emailSettings.UsernamePassword);
                     smtpClient.EnableSsl = true;
-                    await smtpClient.SendMailAsync(mailMessage);// Email will send by his line
+                    await smtpClient.SendMailAsync(mailMessage);
                 };
             }
             catch(Exception ex)
