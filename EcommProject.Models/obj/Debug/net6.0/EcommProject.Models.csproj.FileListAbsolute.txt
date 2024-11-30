@@ -1,0 +1,12 @@
+D:\ASP.NET CORE\EcommProject\EcommProject.Models\bin\Debug\net6.0\EcommProject.Models.deps.json
+D:\ASP.NET CORE\EcommProject\EcommProject.Models\bin\Debug\net6.0\EcommProject.Models.dll
+D:\ASP.NET CORE\EcommProject\EcommProject.Models\bin\Debug\net6.0\EcommProject.Models.pdb
+D:\ASP.NET CORE\EcommProject\EcommProject.Models\obj\Debug\net6.0\EcommProject.Models.csproj.AssemblyReference.cache
+D:\ASP.NET CORE\EcommProject\EcommProject.Models\obj\Debug\net6.0\EcommProject.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\ASP.NET CORE\EcommProject\EcommProject.Models\obj\Debug\net6.0\EcommProject.Models.AssemblyInfoInputs.cache
+D:\ASP.NET CORE\EcommProject\EcommProject.Models\obj\Debug\net6.0\EcommProject.Models.AssemblyInfo.cs
+D:\ASP.NET CORE\EcommProject\EcommProject.Models\obj\Debug\net6.0\EcommProject.Models.csproj.CoreCompileInputs.cache
+D:\ASP.NET CORE\EcommProject\EcommProject.Models\obj\Debug\net6.0\EcommProject.Models.dll
+D:\ASP.NET CORE\EcommProject\EcommProject.Models\obj\Debug\net6.0\refint\EcommProject.Models.dll
+D:\ASP.NET CORE\EcommProject\EcommProject.Models\obj\Debug\net6.0\EcommProject.Models.pdb
+D:\ASP.NET CORE\EcommProject\EcommProject.Models\obj\Debug\net6.0\ref\EcommProject.Models.dll
