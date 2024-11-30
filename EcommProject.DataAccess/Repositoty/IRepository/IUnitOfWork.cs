@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace EcommProject.DataAccess.Repository.IRepository
 {
-    public interface IUnitOfWork  //Interface is public so members will be public byDefault
+    public interface IUnitOfWork  
     {
-        ICategoryRepository Category { get; } //This is property, Category naam rakh diya
+        ICategoryRepository Category { get; }
         ICoverTypeRepository CoverType { get; }
         ISP_CALL SP_CALL { get; }
         IProductRepository Product { get; }
