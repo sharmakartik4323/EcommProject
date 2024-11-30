@@ -78,13 +78,13 @@ namespace EcommProject.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var webRootPath = _webHostEnvironment.WebRootPath; //WebRootPath apne aap path uthalega wwwroot tak kaa
-                var files = HttpContext.Request.Form.Files; //Form me jaa kr Image baale section tak jaaega
+                var webRootPath = _webHostEnvironment.WebRootPath; 
+                var files = HttpContext.Request.Form.Files; 
                 if (files.Count() > 0)
                 {
-                    var fileName = Guid.NewGuid().ToString(); //This is used to generate file name randomly on server, because file name same nhi hona cahiye, otherwise file overwrite hojaegi.GUID = Global Uni Identifier
-                    var extension = Path.GetExtension(files[0].FileName); // Ek hi file kaa extension uthaega or usko hi extension bnaega, NOT Applicable in Case of Multiple files
-                    var uploads = Path.Combine(webRootPath, @"images\products");//Use to combine Path i.e. fileName+extension , webRootPath wwwroot tak utaega Path, @ for escape sequence
+                    var fileName = Guid.NewGuid().ToString(); 
+                    var extension = Path.GetExtension(files[0].FileName); 
+                    var uploads = Path.Combine(webRootPath, @"images\products");
                     if (productVM.Product.Id != 0)
                     {
                         var imageExists = _unitOfWork.Product.Get(productVM.Product.Id).ImageUrl;
@@ -98,9 +98,9 @@ namespace EcommProject.Areas.Admin.Controllers
                             System.IO.File.Delete(imagePath);
                         }
                     }
-                    using (var fileStream = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create)) //uploads uper ek variable bnaya hai jisme file bnegi, FileMode.Create means File bnaegaa
+                    using (var fileStream = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create)) 
                     {
-                        files[0].CopyTo(fileStream); //file[0] me actual file hai jo browse krke select ki  thi CopyTo usko fileStream me write kr dega
+                        files[0].CopyTo(fileStream); 
                     }
                     productVM.Product.ImageUrl = @"\images\products\" + fileName + extension;
                 }
