@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EcommProject.DataAccess.Repository.IRepository
 {
-    public interface ICategoryRepository:IRepository<Category> //IRepository generic repository hai usme pass kiya Category
+    public interface ICategoryRepository:IRepository<Category> 
     {
     }
 }
