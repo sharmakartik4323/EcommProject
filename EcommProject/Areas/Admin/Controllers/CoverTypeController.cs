@@ -25,7 +25,7 @@ namespace EcommProject.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            //return Json(new { data = _unitOfWork.CoverType.GetAll() }); //GetAll is a Generic Method,rightclick Go To Implementation
+            //return Json(new { data = _unitOfWork.CoverType.GetAll() });
             return Json(new { data = _unitOfWork.SP_CALL.List<CoverType>(SD.Proc_GetCoverTypes) });
         }
         [HttpDelete]
@@ -50,7 +50,7 @@ namespace EcommProject.Areas.Admin.Controllers
             DynamicParameters param = new DynamicParameters();
             param.Add("id", id.GetValueOrDefault());
             coverType = _unitOfWork.SP_CALL.OneRecord<CoverType>(SD.Proc_GetCoverType, param);
-            //coverType = _unitOfWork.CoverType.Get(id.GetValueOrDefault());  //right click on Get go to implementation
+            //coverType = _unitOfWork.CoverType.Get(id.GetValueOrDefault());  
             if (coverType == null) return NotFound();
             return View(coverType);
         }
