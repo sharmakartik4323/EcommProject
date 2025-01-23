@@ -1,0 +1,101 @@
+﻿@model EcommProject.Models.OrderDetails
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="text-center">
+                        Order Details for @Model.OrderHeader.Name
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Order Information</h4>
+                    <table class="table">
+                        <tr>
+                            <th>Customer Name:</th>
+                            <td>@Model.OrderHeader.ApplicationUser.Name</td>
+                        </tr>
+                        <tr>
+                            <th>Total Amount:</th>
+                            <td>@Model.OrderHeader.OrderTotal</td>
+                        </tr>
+                        <tr>
+                            <th>Order Status:</th>
+                            <td>@Model.OrderHeader.OrderStatus</td>
+                        </tr>
+                        <tr>
+                            <th>Date & Time:</th>
+                            <td>@Model.OrderHeader.OrderDate</td>
+                        </tr>
+                        <tr>
+                            <th>Transaction Id:</th>
+                            <td>@Model.OrderHeader.TransactionId</td>
+                        </tr>
+                    </table>
+
+                    <hr>
+
+                    <h4 class="card-title">Product Details</h4>
+                    <table class="table">
+                        <tr>
+                            <th>Title:</th>
+                            <td>@Model.Product.Title</td>
+                        </tr>
+                        <tr>
+                            <th>CoverType:</th>
+                            <td>@Model.Product.CoverType.Name</td>
+                        </tr>
+                        <tr>
+                            <th>Category:</th>
+                            <td>@Model.Product.Category.Name</td>
+                        </tr>
+                    </table>
+
+                    <hr>
+
+                    <h4 class="card-title">User's Details</h4>
+                    <table class="table">
+                        <tr>
+                            <th>Name:</th>
+                            <td>@Model.OrderHeader.ApplicationUser.Name</td>
+                        </tr>
+                        <tr>
+                            <th>Email Address:</th>
+                            <td>@Model.OrderHeader.ApplicationUser.Email</td>
+                        </tr>
+                        <tr>
+                            <th>Contact Number:</th>
+                            <td>@Model.OrderHeader.ApplicationUser.PhoneNumber</td>
+                        </tr>
+                        <tr>
+                            <th>Street Address:</th>
+                            <td>@Model.OrderHeader.ApplicationUser.StreetAddress</td>
+                        </tr>
+                        <tr>
+                            <th>City:</th>
+                            <td>@Model.OrderHeader.ApplicationUser.City</td>
+                        </tr>
+                        <tr>
+                            <th>State:</th>
+                            <td>@Model.OrderHeader.ApplicationUser.State</td>
+                        </tr>
+                        <tr>
+                            <th>Postal Code:</th>
+                            <td>@Model.OrderHeader.ApplicationUser.PostalCode</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Index" class="btn btn-primary">Back To All Orders</a>
+                    <a asp-action="OrdersConfirmation" asp-route-id="@Model.OrderHeader.ApplicationUserId" class="btn btn-primary">Send Confirmations</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-footer text-center">
+    <a asp-action="ApproveOrder" asp-route-id="@Model.OrderHeader.Id" class="btn btn-success">Approve Order</a>
+    <a asp-action="CancelOrder" asp-route-id="@Model.OrderHeader.Id" class="btn btn-danger">Cancel Order</a>
+</div>

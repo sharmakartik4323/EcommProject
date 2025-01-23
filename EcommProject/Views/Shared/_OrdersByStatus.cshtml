@@ -1,0 +1,14 @@
+﻿<div>
+    <div class="nav-brand dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Orders By Status</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" asp-area="Admin" asp-controller="OrderManagement" asp-action="Index">All Orders</a>
+            <a class="dropdown-item" asp-area="Admin" asp-controller="OrderManagement" asp-action="Pending">Pending Orders</a>
+            <a class="dropdown-item" asp-area="Admin" asp-controller="OrderManagement" asp-action="Approved">Approved Orders</a>
+            <a class="dropdown-item" asp-area="Admin" asp-controller="OrderManagement" asp-action="Processing">Processing Orders</a>
+            <a class="dropdown-item" asp-area="Admin" asp-controller="OrderManagement" asp-action="Shipped">Shipped Orders</a>
+            <a class="dropdown-item" asp-area="Admin" asp-controller="OrderManagement" asp-action="Cancelled">Cancelled Orders</a>
+            <a class="dropdown-item" asp-area="Admin" asp-controller="OrderManagement" asp-action="Refunded">Refunded Orders</a>
+        </div>
+    </div>
+</div>

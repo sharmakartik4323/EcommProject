@@ -1,0 +1,12 @@
+D:\ASP.NET CORE\EcommProject\EcommProject.Utility\bin\Debug\net6.0\EcommProject.Utility.deps.json
+D:\ASP.NET CORE\EcommProject\EcommProject.Utility\bin\Debug\net6.0\EcommProject.Utility.dll
+D:\ASP.NET CORE\EcommProject\EcommProject.Utility\bin\Debug\net6.0\EcommProject.Utility.pdb
+D:\ASP.NET CORE\EcommProject\EcommProject.Utility\obj\Debug\net6.0\EcommProject.Utility.csproj.AssemblyReference.cache
+D:\ASP.NET CORE\EcommProject\EcommProject.Utility\obj\Debug\net6.0\EcommProject.Utility.GeneratedMSBuildEditorConfig.editorconfig
+D:\ASP.NET CORE\EcommProject\EcommProject.Utility\obj\Debug\net6.0\EcommProject.Utility.AssemblyInfoInputs.cache
+D:\ASP.NET CORE\EcommProject\EcommProject.Utility\obj\Debug\net6.0\EcommProject.Utility.AssemblyInfo.cs
+D:\ASP.NET CORE\EcommProject\EcommProject.Utility\obj\Debug\net6.0\EcommProject.Utility.csproj.CoreCompileInputs.cache
+D:\ASP.NET CORE\EcommProject\EcommProject.Utility\obj\Debug\net6.0\EcommProject.Utility.dll
+D:\ASP.NET CORE\EcommProject\EcommProject.Utility\obj\Debug\net6.0\refint\EcommProject.Utility.dll
+D:\ASP.NET CORE\EcommProject\EcommProject.Utility\obj\Debug\net6.0\EcommProject.Utility.pdb
+D:\ASP.NET CORE\EcommProject\EcommProject.Utility\obj\Debug\net6.0\ref\EcommProject.Utility.dll

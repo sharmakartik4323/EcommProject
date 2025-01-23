@@ -1,0 +1,80 @@
+﻿@model IEnumerable<EcommProject.Models.ViewModels.ProductWithTimeViewModel>
+
+<!-- Search Form -->
+<form asp-action="Index" method="get">
+    <div class="row mb-4">
+        <h4 class="col-2">Search:</h4>
+        <div class="form-check col-1">
+            <input class="form-check-input" type="radio" name="search" id="searchAll" value="All" checked>
+            <label class="form-check-label" for="searchAll">All</label>
+        </div>
+        <div class="form-check col-1">
+            <input class="form-check-input" type="radio" name="search" id="searchTitle" value="Title">
+            <label class="form-check-label" for="searchTitle">Title</label>
+        </div>
+        <div class="form-check col-1">
+            <input class="form-check-input" type="radio" name="search" id="searchAuthor" value="Author">
+            <label class="form-check-label" for="searchAuthor">Author</label>
+        </div>
+        <input class="col-4 form-control mr-sm-2" type="text" name="searchTxt" placeholder="Search...">
+        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+    </div>
+</form>
+
+<div class="d-flex justify-content-between mt-3">
+    <!-- New Buttons with Tag Helpers -->
+    <a asp-action="Writing" asp-controller="Home" class="btn btn-primary btn-sm">Writing</a>
+    <a asp-action="Science" asp-controller="Home" class="btn btn-success btn-sm">Science</a>
+</div>
+
+<!-- Product List -->
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card" style="border: 1px solid #008cba; border-radius: 5px;">
+                <img src="@item.Product.ImageUrl" class="card-img-top rounded" style="height:280px; object-fit: cover;" />
+                <div class="card-body">
+                    <h5 class="card-title text-primary" style="color:#2c3e50">@item.Product.Title</h5>
+                    <p class="card-text">by <b>@item.Product.Author</b></p>
+                    <p class="card-text">
+                        <span style="text-decoration: line-through; color: #999;">
+                            $@item.Product.ListPrice.ToString("0.00")
+                        </span>
+                    </p>
+                    <p class="card-text" style="color: maroon">
+                        As low as: <b>$@item.Product.Price100.ToString("0.00")</b>
+                    </p>
+                    <p class="card-text" style="color: maroon">
+                        @{
+                            var discount = (@item.Product.Price100 * @item.Product.Percent) / 100;
+                            <b>Discounted Price: @discount</b>
+                        }
+                    </p>
+
+                    <!-- Remaining Time Logic -->
+                    @if (item.RemainingTime > TimeSpan.Zero)
+                    {
+                        <div class="offer-timer text-center" style="background-color:#ffcc00; border-radius: 5px; padding: 10px;">
+                            <p><b>Limited Time Offer!</b></p>
+                            <p>Hurry up! This offer ends in:</p>
+                            <p>@item.RemainingTime.Hours h @item.RemainingTime.Minutes m @item.RemainingTime.Seconds s</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="offer-timer text-center" style="background-color:#ffcc00; border-radius: 5px; padding: 10px;">
+                            <p><b>Limited Time Offer!</b></p>
+                            <p>Offer Ended</p>
+                        </div>
+                    }
+
+                    <div class="d-flex justify-content-between mt-3">
+                        <a href="@Url.Action("Details", "Home", new { id = item.Product.Id })" class="btn btn-secondary btn-sm">Add to Cart</a>
+                        <a href="@Url.Action("Details", "Home", new { id = item.Product.Id })" class="btn btn-info btn-sm">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
